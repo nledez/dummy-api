@@ -27,10 +27,10 @@ def name():
 
 def get_url(url):
     r = requests.get(url)
-    print('headers: {}'.format(r.headers))
-    print('encoding: {}'.format(r.encoding))
-    print('text: {}'.format(r.text))
-    print('json: {}'.format(r.json()))
+    # print('headers: {}'.format(r.headers))
+    # print('encoding: {}'.format(r.encoding))
+    # print('text: {}'.format(r.text))
+    # print('json: {}'.format(r.json()))
     return r.text
 
 @app.route('/back1')
