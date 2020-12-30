@@ -15,7 +15,7 @@ BACK2 = os.environ.get('BACK2', 'https://api.github.com/users/nledez/keys')
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World!'
+    return '{} say: Hello, World!'.format(NAME)
 
 @app.route('/hostname')
 def hostname():
