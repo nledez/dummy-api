@@ -11,6 +11,8 @@ app = Flask(__name__)
 NAME  = os.environ.get('NAME',  'default')
 BACK1 = os.environ.get('BACK1', 'https://api.github.com/users/nledez')
 BACK2 = os.environ.get('BACK2', 'https://api.github.com/users/nledez/keys')
+HOST  = os.environ.get('BIND_HOST', '0.0.0.0')
+PORT  = os.environ.get('BIND_PORT', 5000)
 
 
 @app.route('/')
@@ -74,4 +76,4 @@ if __name__ == '__main__':
             BACK2 = a
         else:
             assert False, "unhandled option"
-    app.run(host='0.0.0.0')
+    app.run(host=HOST, port=PORT)
