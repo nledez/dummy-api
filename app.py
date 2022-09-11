@@ -4,7 +4,7 @@ import requests
 import socket
 import sys
 
-from flask import Flask
+from flask import Flask, Response
 app = Flask(__name__)
 
 
@@ -13,6 +13,18 @@ BACK1 = os.environ.get('BACK1', 'https://api.github.com/users/nledez')
 BACK2 = os.environ.get('BACK2', 'https://api.github.com/users/nledez/keys')
 HOST  = os.environ.get('BIND_HOST', '0.0.0.0')
 PORT  = os.environ.get('BIND_PORT', 5000)
+
+
+def root_dir():
+    return os.path.abspath(os.path.dirname(__file__))
+
+
+def get_file(filename):
+    try:
+        src = os.path.join(root_dir(), filename)
+        return open(src).read()
+    except IOError as exc:
+        return str(exc)
 
 
 @app.route('/')
@@ -29,10 +41,6 @@ def name():
 
 def get_url(url):
     r = requests.get(url)
-    # print('headers: {}'.format(r.headers))
-    # print('encoding: {}'.format(r.encoding))
-    # print('text: {}'.format(r.text))
-    # print('json: {}'.format(r.json()))
     return r.text
 
 @app.route('/back1')
@@ -42,6 +50,11 @@ def back1():
 @app.route('/back2')
 def back2():
     return get_url(BACK2)
+
+@app.route('/summary')
+def summary():
+    content = get_file('summary.html')
+    return Response(content, mimetype="text/html")
 
 def usage():
     print('Usage:')
