@@ -1,0 +1,7 @@
+version: "3.6"
+
+services:
+ api:
+  image: nledez/dummy-api
+  ports:
+   - "5000:5000"

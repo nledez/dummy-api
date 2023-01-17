@@ -1,3 +1,6 @@
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/nledez/dummy-api/docker)
+![Docker Pulls](https://img.shields.io/docker/pulls/nledez/dummy-api)
+
 Install
 =======
 
